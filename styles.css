@@ -507,11 +507,17 @@ code {
   align-items: start;
 }
 
+.image-pair--stacked {
+  grid-template-columns: 1fr;
+  gap: 18px;
+}
+
 .image-card {
   margin: 0;
   display: grid;
   gap: 12px;
   align-content: start;
+  min-width: 0;
 }
 
 .image-button {
@@ -537,6 +543,27 @@ code {
     box-shadow 180ms ease;
 }
 
+.image-button--portrait {
+  min-height: clamp(340px, 42vw, 660px);
+}
+
+.image-button--landscape {
+  min-height: clamp(220px, 20vw, 300px);
+  padding: 20px;
+}
+
+.image-button--square {
+  min-height: clamp(260px, 28vw, 360px);
+}
+
+.image-pair--stacked .image-button {
+  min-height: clamp(260px, 34vw, 460px);
+}
+
+.image-pair--stacked .image-button--portrait {
+  min-height: clamp(360px, 54vw, 760px);
+}
+
 .image-button:hover,
 .image-button:focus-visible {
   transform: translateY(-3px);
@@ -551,6 +578,7 @@ code {
   height: auto;
   max-width: 100%;
   max-height: min(72vh, 860px);
+  margin: auto;
   object-fit: contain;
   object-position: center;
   border-radius: 18px;

@@ -137,6 +137,66 @@ function renderTerms(items) {
   }
 }
 
+function describeImageShape(img) {
+  const width = img.naturalWidth;
+  const height = img.naturalHeight;
+
+  if (!width || !height) {
+    return "unknown";
+  }
+
+  const ratio = width / height;
+
+  if (ratio >= 1.25) {
+    return "landscape";
+  }
+
+  if (ratio <= 0.85) {
+    return "portrait";
+  }
+
+  return "square";
+}
+
+function updatePairLayout(pair) {
+  if (!pair) {
+    return;
+  }
+
+  const buttons = Array.from(pair.querySelectorAll(".image-button"));
+  const shapes = buttons.map((button) => button.dataset.shape || "unknown");
+
+  if (shapes.some((shape) => shape === "unknown")) {
+    return;
+  }
+
+  const landscapeCount = shapes.filter((shape) => shape === "landscape").length;
+  const portraitCount = shapes.filter((shape) => shape === "portrait").length;
+  const shouldStack = landscapeCount > 0 && (portraitCount > 0 || landscapeCount === shapes.length);
+
+  pair.classList.toggle("image-pair--stacked", shouldStack);
+}
+
+function syncImagePresentation(button, img) {
+  const shape = describeImageShape(img);
+  const card = button.closest(".image-card");
+  const pair = button.closest(".image-pair");
+
+  button.dataset.shape = shape;
+  button.classList.toggle("image-button--portrait", shape === "portrait");
+  button.classList.toggle("image-button--landscape", shape === "landscape");
+  button.classList.toggle("image-button--square", shape === "square");
+
+  if (card) {
+    card.dataset.shape = shape;
+    card.classList.toggle("image-card--portrait", shape === "portrait");
+    card.classList.toggle("image-card--landscape", shape === "landscape");
+    card.classList.toggle("image-card--square", shape === "square");
+  }
+
+  updatePairLayout(pair);
+}
+
 function renderSiteContent(content) {
   currentSiteContent = cloneValue(content);
 
@@ -187,6 +247,15 @@ function attachImage(button, image, caption) {
   const img = button.querySelector("img");
   img.src = image.src;
   img.alt = image.alt;
+  img.loading = "lazy";
+
+  const syncPresentation = () => syncImagePresentation(button, img);
+  if (img.complete && img.naturalWidth) {
+    syncPresentation();
+  } else {
+    img.addEventListener("load", syncPresentation, { once: true });
+  }
+
   button.addEventListener("click", () => openLightbox(image.src, image.alt, caption));
 }
 
