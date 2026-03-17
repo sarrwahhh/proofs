@@ -6,7 +6,7 @@
   <title>Proof Gallery</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./styles.css">
   <script src="./app.js" defer></script>
 </head>
@@ -15,10 +15,10 @@
   <main class="page-shell">
     <section class="hero">
       <div class="hero-copy">
-        <p class="eyebrow">GitHub Pages proof board</p>
-        <h1>Proof and payment, matched together in one clean view.</h1>
+        <p class="hero-pill">Live proof board</p>
+        <h1>Where proof pairs feel clean, sharp, and easy to verify.</h1>
         <p class="subtitle">
-          Every card shows the proof image next to the payment image so people can review each set without digging through messages or folders.
+          Every proof image and payment image stays matched together in one darker, cleaner layout so people can review everything fast without scrolling through chats.
         </p>
       </div>
       <aside class="hero-panel" aria-label="Gallery summary">
@@ -30,17 +30,20 @@
           <span id="updated-at" class="stat-value stat-date">Waiting for uploads</span>
           <span class="stat-label">last update</span>
         </div>
+        <p class="hero-helper">
+          Add new pairs with <code>python tools/add_proof.py</code> and publish straight to the site from the desktop uploader.
+        </p>
       </aside>
     </section>
 
     <section class="gallery-section">
       <div class="section-heading">
         <div>
-          <p class="section-kicker">Live gallery</p>
+          <p class="section-kicker">Matched uploads</p>
           <h2>Proof board</h2>
         </div>
         <p class="section-note">
-          Add new pairs with <code>python tools/add_proof.py</code> and push updates with <code>python tools/publish.py</code>.
+          Each card keeps the proof and payment together so the board stays simple to scan on desktop and mobile.
         </p>
       </div>
       <div id="gallery" class="proof-grid" aria-live="polite"></div>
