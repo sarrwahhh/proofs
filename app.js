@@ -147,6 +147,10 @@ function describeImageShape(img) {
 
   const ratio = width / height;
 
+  if (ratio >= 2.2) {
+    return "panorama";
+  }
+
   if (ratio >= 1.25) {
     return "landscape";
   }
@@ -165,12 +169,13 @@ function updatePairLayout(pair) {
 
   const buttons = Array.from(pair.querySelectorAll(".image-button"));
   const shapes = buttons.map((button) => button.dataset.shape || "unknown");
+  const wideShapes = new Set(["landscape", "panorama"]);
 
   if (shapes.some((shape) => shape === "unknown")) {
     return;
   }
 
-  const landscapeCount = shapes.filter((shape) => shape === "landscape").length;
+  const landscapeCount = shapes.filter((shape) => wideShapes.has(shape)).length;
   const portraitCount = shapes.filter((shape) => shape === "portrait").length;
   const shouldStack = landscapeCount > 0 && (portraitCount > 0 || landscapeCount === shapes.length);
 
@@ -183,12 +188,14 @@ function syncImagePresentation(button, img) {
   const pair = button.closest(".image-pair");
 
   button.dataset.shape = shape;
+  button.classList.toggle("image-button--panorama", shape === "panorama");
   button.classList.toggle("image-button--portrait", shape === "portrait");
   button.classList.toggle("image-button--landscape", shape === "landscape");
   button.classList.toggle("image-button--square", shape === "square");
 
   if (card) {
     card.dataset.shape = shape;
+    card.classList.toggle("image-card--panorama", shape === "panorama");
     card.classList.toggle("image-card--portrait", shape === "portrait");
     card.classList.toggle("image-card--landscape", shape === "landscape");
     card.classList.toggle("image-card--square", shape === "square");

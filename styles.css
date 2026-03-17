@@ -509,7 +509,7 @@ code {
 
 .image-pair--stacked {
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 16px;
 }
 
 .image-card {
@@ -547,6 +547,11 @@ code {
   min-height: clamp(340px, 42vw, 660px);
 }
 
+.image-button--panorama {
+  min-height: clamp(140px, 14vw, 210px);
+  padding: 14px;
+}
+
 .image-button--landscape {
   min-height: clamp(220px, 20vw, 300px);
   padding: 20px;
@@ -556,12 +561,22 @@ code {
   min-height: clamp(260px, 28vw, 360px);
 }
 
-.image-pair--stacked .image-button {
-  min-height: clamp(260px, 34vw, 460px);
-}
-
 .image-pair--stacked .image-button--portrait {
   min-height: clamp(360px, 54vw, 760px);
+}
+
+.image-pair--stacked .image-button--square {
+  min-height: clamp(220px, 26vw, 320px);
+}
+
+.image-pair--stacked .image-button--landscape {
+  min-height: clamp(170px, 17vw, 230px);
+  padding: 16px;
+}
+
+.image-pair--stacked .image-button--panorama {
+  min-height: clamp(110px, 11vw, 160px);
+  padding: 12px;
 }
 
 .image-button:hover,
