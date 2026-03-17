@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proof Gallery</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <div class="page-backdrop"></div>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">GitHub Pages proof board</p>
+        <h1>Proof and payment, matched together in one clean view.</h1>
+        <p class="subtitle">
+          Every card shows the proof image next to the payment image so people can review each set without digging through messages or folders.
+        </p>
+      </div>
+      <aside class="hero-panel" aria-label="Gallery summary">
+        <div class="stat-block">
+          <span id="proof-count" class="stat-value">0</span>
+          <span class="stat-label">proof sets</span>
+        </div>
+        <div class="stat-block">
+          <span id="updated-at" class="stat-value stat-date">Waiting for uploads</span>
+          <span class="stat-label">last update</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="gallery-section">
+      <div class="section-heading">
+        <div>
+          <p class="section-kicker">Live gallery</p>
+          <h2>Proof board</h2>
+        </div>
+        <p class="section-note">
+          Add new pairs with <code>python tools/add_proof.py</code> and push updates with <code>python tools/publish.py</code>.
+        </p>
+      </div>
+      <div id="gallery" class="proof-grid" aria-live="polite"></div>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" hidden>
+    <button id="lightbox-close" class="lightbox-close" type="button" aria-label="Close image viewer">Close</button>
+    <figure class="lightbox-frame">
+      <img id="lightbox-image" src="" alt="">
+      <figcaption id="lightbox-caption"></figcaption>
+    </figure>
+  </div>
+
+  <template id="proof-card-template">
+    <article class="proof-card">
+      <header class="card-header">
+        <div>
+          <h3 class="card-title"></h3>
+          <p class="card-meta"></p>
+        </div>
+        <span class="card-date"></span>
+      </header>
+      <p class="card-note" hidden></p>
+      <div class="image-pair">
+        <figure class="image-card">
+          <button class="image-button proof-button" type="button">
+            <img class="proof-image" alt="">
+          </button>
+          <figcaption>Proof</figcaption>
+        </figure>
+        <figure class="image-card">
+          <button class="image-button payment-button" type="button">
+            <img class="payment-image" alt="">
+          </button>
+          <figcaption>Payment</figcaption>
+        </figure>
+      </div>
+    </article>
+  </template>
+</body>
+</html>
