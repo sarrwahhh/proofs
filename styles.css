@@ -314,6 +314,10 @@ code {
   background: rgba(14, 10, 8, 0.82);
 }
 
+.lightbox[hidden] {
+  display: none;
+}
+
 .lightbox-frame {
   margin: 0;
   max-width: min(960px, 100%);
