@@ -86,7 +86,7 @@ function renderEmptyState() {
   card.innerHTML = `
     <div>
       <h3>No proof sets yet</h3>
-      <p>Run <code>python tools/add_proof.py</code> to add your first proof and payment pair. After that, use <code>python tools/publish.py</code> to push it to GitHub Pages.</p>
+      <p>Your proof and payment pairs will appear here after the first upload.</p>
     </div>
   `;
   gallery.replaceChildren(card);

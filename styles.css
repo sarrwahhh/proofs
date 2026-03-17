@@ -222,15 +222,14 @@ code {
   font-weight: 800;
 }
 
-.hero-helper {
+.stat-block-wide {
   grid-column: 1 / -1;
-  margin: 0;
-  padding: 18px 20px;
-  border: 1px solid var(--border-soft);
-  border-radius: var(--radius-md);
-  color: var(--muted);
-  line-height: 1.7;
-  background: rgba(255, 255, 255, 0.03);
+}
+
+.stat-copy {
+  max-width: 22ch;
+  font-size: clamp(1.05rem, 2vw, 1.4rem);
+  line-height: 1.45;
 }
 
 .gallery-section {
@@ -268,6 +267,168 @@ code {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 22px;
+}
+
+.details-section {
+  margin-top: 52px;
+}
+
+.details-heading {
+  width: min(820px, 100%);
+  margin: 0 auto 24px;
+  display: grid;
+  justify-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.section-pill {
+  margin-bottom: 2px;
+}
+
+.details-section h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2rem, 4.5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+.details-note {
+  max-width: 700px;
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.details-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background:
+    radial-gradient(circle at top center, rgba(255, 255, 255, 0.04), transparent 40%),
+    linear-gradient(180deg, rgba(18, 18, 20, 0.98), rgba(7, 7, 8, 0.98));
+  box-shadow: var(--shadow);
+}
+
+.details-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 28%);
+}
+
+.details-card:not(.details-card-wide) {
+  padding: 24px;
+}
+
+.details-pill {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  padding: 10px 16px;
+  border: 1px solid var(--border-soft);
+  border-radius: 999px;
+  color: var(--muted-strong);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.76rem;
+  font-weight: 800;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.details-pill::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(241, 220, 193, 0.9);
+  box-shadow: 0 0 12px rgba(241, 220, 193, 0.28);
+}
+
+.details-list {
+  position: relative;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.details-list li {
+  position: relative;
+  padding: 18px 0 18px 42px;
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.6;
+  border-top: 1px solid var(--border-soft);
+}
+
+.details-list li:first-child {
+  border-top: 0;
+  padding-top: 12px;
+}
+
+.details-list li::before {
+  position: absolute;
+  left: 2px;
+  top: 17px;
+  font-size: 1.05rem;
+  color: var(--muted-strong);
+}
+
+.details-list-positive li::before {
+  content: "+";
+}
+
+.details-list-neutral li::before {
+  content: "-";
+}
+
+.details-card-wide {
+  margin-top: 22px;
+  padding: 24px;
+}
+
+.terms-grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.term-item {
+  display: grid;
+  gap: 8px;
+  min-height: 132px;
+  padding: 18px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  background:
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.05), transparent 58%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+}
+
+.term-label {
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.13em;
+  font-size: 0.72rem;
+  font-weight: 800;
+}
+
+.term-item strong {
+  font-size: 1.05rem;
+  line-height: 1.55;
 }
 
 .proof-card,
@@ -465,6 +626,8 @@ code {
 @media (max-width: 980px) {
   .hero-panel,
   .proof-grid,
+  .details-grid,
+  .terms-grid,
   .image-pair,
   .section-heading {
     grid-template-columns: 1fr;
@@ -489,11 +652,13 @@ code {
 
   .subtitle,
   .section-note,
-  .hero-helper {
+  .details-note,
+  .stat-copy {
     font-size: 0.98rem;
   }
 
   .hero-panel,
+  .details-card,
   .proof-card,
   .empty-state,
   .error-state {
@@ -501,6 +666,7 @@ code {
   }
 
   .hero-panel,
+  .details-card,
   .proof-card {
     padding: 18px;
   }
