@@ -240,20 +240,27 @@ code {
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 14px;
   margin-top: 18px;
+  align-items: start;
 }
 
 .image-card {
   margin: 0;
+  display: grid;
+  align-content: start;
 }
 
 .image-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
-  padding: 0;
+  min-height: 280px;
+  padding: 14px;
   border: 0;
   border-radius: 18px;
   overflow: hidden;
   cursor: zoom-in;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.1));
+  background: rgba(255, 255, 255, 0.92);
   box-shadow: inset 0 0 0 1px rgba(35, 23, 15, 0.06);
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
@@ -267,10 +274,13 @@ code {
 }
 
 .image-button img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
-  background: rgba(35, 23, 15, 0.04);
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(72vh, 860px);
+  object-fit: contain;
+  object-position: center;
+  background: transparent;
 }
 
 .image-card figcaption {
@@ -378,8 +388,8 @@ code {
     grid-template-columns: 1fr;
   }
 
-  .image-button img {
-    height: 220px;
+  .image-button {
+    min-height: 220px;
   }
 
   .card-header {
