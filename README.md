@@ -23,11 +23,13 @@ Your site URL will be:
 
 ## Add a new proof set
 
-Interactive mode:
+Desktop window:
 
 ```powershell
 python tools/add_proof.py
 ```
+
+That opens a simple window where you click `Choose proof`, `Choose payment`, and then `Confirm and upload`.
 
 Direct command:
 
@@ -42,6 +44,12 @@ python tools/add_proof.py --proof "C:\path\to\proof.jpg" --payment "C:\path\to\p
 ```
 
 If you confirm the publish step, or use `--publish`, the script will commit and push the update to GitHub for you.
+
+If you want the old terminal-only behavior, run:
+
+```powershell
+python tools/add_proof.py --no-gui
+```
 
 ## Preview locally
 
