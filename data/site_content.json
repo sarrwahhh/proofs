@@ -19,26 +19,26 @@
   },
   "overview": {
     "pill": "Overview preview",
-    "title": "Placeholder sections you can replace later",
-    "note": "This area is set up to preview extra copy under the gallery. The wording below stays neutral on purpose so you can swap in your final version whenever you are ready."
+    "title": "Professional access and security, simplified.",
+    "note": "Unlock advanced capabilities, enhanced privacy controls, and direct, one-time pricing\u2014all built to empower your workflow."
   },
   "details": {
     "benefits": {
       "title": "Exclusive Benefits",
       "items": [
-        "Placeholder line for the main premium feature or standout offer.",
-        "Placeholder line for higher limits, expanded access, or added value.",
-        "Placeholder line for creative tools, extras, or advanced options.",
-        "Placeholder line for additional perks you want to highlight clearly."
+        "+ Smarter Reasoning: Full access to GPT-4o and the latest advanced models.",
+        "+ Higher Limits: Increased message caps and expanded file upload capacity.",
+        "+ Creative Tools: Use DALL-E for image generation and Data Analysis for spreadsheets.",
+        "+ Enhanced Features: Full access to Memory, Custom GPT Agents, and Deep Research."
       ]
     },
     "privacy": {
       "title": "Privacy & Security",
       "items": [
-        "Placeholder line for privacy expectations or personal-use wording.",
-        "Placeholder line for secure setup, support, or access notes.",
-        "Placeholder line for reliability, consistency, or account stability.",
-        "Placeholder line for anything important people should know up front."
+        "- 100% Private: This is NOT a shared account. You get a unique login with your own private history.",
+        "- Full Ownership: Created with a fresh email. The email is fully changeable once you receive it.",
+        "- High Reliability: Personally activated to ensure the subscription lasts the full term without being revoked or deactivated.",
+        "- Secure Handoff: Instant delivery of credentials as soon as your setup is confirmed."
       ]
     },
     "terms": {
@@ -46,19 +46,19 @@
       "items": [
         {
           "label": "Duration",
-          "value": "Placeholder duration text"
+          "value": "30 days of active Plus subscription from the date of purchase."
         },
         {
           "label": "Price",
-          "value": "Placeholder price here"
+          "value": "$3.00"
         },
         {
           "label": "Fees",
-          "value": "Placeholder one-time payment note"
+          "value": "One-time activation\u2014no recurring monthly billing."
         },
         {
           "label": "Payment",
-          "value": "Placeholder payment methods here"
+          "value": "Crypto, PayPal (Friends & Family), Venmo"
         }
       ]
     }
