@@ -175,9 +175,10 @@ function updatePairLayout(pair) {
     return;
   }
 
-  const landscapeCount = shapes.filter((shape) => wideShapes.has(shape)).length;
-  const portraitCount = shapes.filter((shape) => shape === "portrait").length;
-  const shouldStack = landscapeCount > 0 && (portraitCount > 0 || landscapeCount === shapes.length);
+  const hasPortrait = shapes.includes("portrait");
+  const hasNonPortrait = shapes.some((shape) => shape !== "portrait");
+  const allWide = shapes.every((shape) => wideShapes.has(shape));
+  const shouldStack = (hasPortrait && hasNonPortrait) || allWide;
 
   pair.classList.toggle("image-pair--stacked", shouldStack);
 }
