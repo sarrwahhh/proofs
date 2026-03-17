@@ -117,6 +117,7 @@ code {
   border-radius: 999px;
   color: var(--muted-strong);
   text-decoration: none;
+  white-space: nowrap;
   font-size: 0.98rem;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -799,19 +800,30 @@ code {
   }
 
   .hero-nav {
-    width: min(100%, 440px);
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) 44px;
+    align-items: center;
+    gap: 6px;
+    width: min(100%, 360px);
     margin-bottom: 22px;
-    justify-content: center;
+    padding: 6px;
   }
 
   .hero-nav-link {
     min-width: 0;
-    flex: 1 1 120px;
-    padding-inline: 16px;
+    width: 100%;
+    padding: 10px 8px;
+    font-size: clamp(0.84rem, 3vw, 0.92rem);
   }
 
   .hero-nav-icon {
-    flex: 0 0 48px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .hero-nav-icon img {
+    width: 22px;
+    height: 22px;
   }
 
   .social-link {
