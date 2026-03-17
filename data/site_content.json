@@ -1,13 +1,13 @@
 {
   "hero": {
     "pill": "Verified showcase",
-    "title": "Proofs, key details, and terms in one polished view.",
-    "subtitle": "Review the proof and payment gallery first, then scroll into a clean placeholder section built for highlights, privacy notes, and terms you can swap later."
+    "title": "proofs, transaction transparency, and clear terms.",
+    "subtitle": "Browse the authenticated proof gallery below. Following the showcase, you\u2019ll find detailed insights into our security standards and service protocols."
   },
   "stats": {
-    "count_label": "proof sets",
-    "updated_label": "last update",
-    "layout_value": "Proof + payment stay paired together for fast review.",
+    "count_label": "PROOF SETS",
+    "updated_label": "LATEST ENTRY",
+    "layout_value": "Integrated proof and payment verification for instant validation.",
     "layout_label": "layout"
   },
   "gallery": {
