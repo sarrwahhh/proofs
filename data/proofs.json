@@ -1,4 +1,15 @@
 {
-  "updated_at": null,
-  "items": []
+  "updated_at": "2026-03-17T05:01:24-05:00",
+  "items": [
+    {
+      "id": "20260317050124-proof",
+      "title": "Proof",
+      "customer": "",
+      "date": "",
+      "note": "",
+      "proof_image": "assets/uploads/20260317050124-proof-proof.png",
+      "payment_image": "assets/uploads/20260317050124-proof-payment.png",
+      "added_at": "2026-03-17T05:01:24-05:00"
+    }
+  ]
 }
