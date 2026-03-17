@@ -300,8 +300,10 @@ code {
 
 .proof-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-template-columns: 1fr;
   gap: 22px;
+  width: min(980px, 100%);
+  margin: 0 auto;
 }
 
 .details-section {
