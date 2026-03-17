@@ -308,6 +308,17 @@ code {
   margin-top: 52px;
 }
 
+.footer-social-wrap {
+  display: grid;
+  place-items: center;
+  margin-top: 28px;
+}
+
+.footer-social-link {
+  width: 70px;
+  height: 70px;
+}
+
 .details-heading {
   width: min(820px, 100%);
   margin: 0 auto 24px;
