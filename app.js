@@ -6,6 +6,10 @@ const lightbox = document.querySelector("#lightbox");
 const lightboxImage = document.querySelector("#lightbox-image");
 const lightboxCaption = document.querySelector("#lightbox-caption");
 const lightboxClose = document.querySelector("#lightbox-close");
+const heroNav = document.querySelector(".hero-nav");
+const heroNavLinks = Array.from(document.querySelectorAll(".hero-nav-link"));
+
+let releasePinnedNav = () => {};
 
 function cloneValue(value) {
   return JSON.parse(JSON.stringify(value));
@@ -251,6 +255,61 @@ function closeLightbox() {
   document.body.style.overflow = "";
 }
 
+function setPinnedNav(isPinned) {
+  if (!heroNav) {
+    return;
+  }
+
+  heroNav.classList.toggle("hero-nav--pinned", isPinned);
+
+  if (!isPinned) {
+    releasePinnedNav();
+  }
+}
+
+function pinNavUntilManualScroll() {
+  if (!heroNav) {
+    return;
+  }
+
+  releasePinnedNav();
+  heroNav.classList.add("hero-nav--pinned");
+
+  const unpin = () => setPinnedNav(false);
+  const handleKeydown = (event) => {
+    if (["ArrowDown", "ArrowUp", "PageDown", "PageUp", "Home", "End", " "].includes(event.key)) {
+      unpin();
+    }
+  };
+
+  window.addEventListener("wheel", unpin, { passive: true });
+  window.addEventListener("touchmove", unpin, { passive: true });
+  window.addEventListener("keydown", handleKeydown);
+
+  releasePinnedNav = () => {
+    window.removeEventListener("wheel", unpin);
+    window.removeEventListener("touchmove", unpin);
+    window.removeEventListener("keydown", handleKeydown);
+    releasePinnedNav = () => {};
+  };
+}
+
+function scrollToNavTarget(target) {
+  if (!target || !heroNav) {
+    return;
+  }
+
+  const navOffset = heroNav.offsetHeight + 24;
+  const top = target.id === "top"
+    ? 0
+    : Math.max(0, target.getBoundingClientRect().top + window.scrollY - navOffset);
+
+  window.scrollTo({
+    top,
+    behavior: "smooth",
+  });
+}
+
 function attachImage(button, image, caption) {
   const img = button.querySelector("img");
   img.src = image.src;
@@ -383,5 +442,25 @@ window.addEventListener("keydown", (event) => {
     closeLightbox();
   }
 });
+
+for (const link of heroNavLinks) {
+  link.addEventListener("click", (event) => {
+    const href = link.getAttribute("href");
+
+    if (!href || !href.startsWith("#")) {
+      return;
+    }
+
+    const target = document.querySelector(href);
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+    pinNavUntilManualScroll();
+    history.replaceState(null, "", href);
+    scrollToNavTarget(target);
+  });
+}
 
 loadPage();

@@ -108,6 +108,15 @@ code {
   backdrop-filter: blur(18px);
 }
 
+.hero-nav--pinned {
+  position: fixed;
+  top: 16px;
+  left: 50%;
+  margin: 0;
+  transform: translateX(-50%);
+  z-index: 35;
+}
+
 .hero-nav-link {
   display: inline-flex;
   align-items: center;
@@ -807,6 +816,10 @@ code {
     width: min(100%, 360px);
     margin-bottom: 22px;
     padding: 6px;
+  }
+
+  .hero-nav--pinned {
+    top: 10px;
   }
 
   .hero-nav-link {
