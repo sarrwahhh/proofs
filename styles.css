@@ -86,14 +86,10 @@ code {
   gap: 28px;
   justify-items: center;
   padding: 18px 0 12px;
-  scroll-margin-top: 108px;
 }
 
 .hero-nav {
-  position: sticky;
-  top: 16px;
-  z-index: 35;
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
@@ -353,7 +349,7 @@ code {
 
 .gallery-section {
   margin-top: 34px;
-  scroll-margin-top: 108px;
+  scroll-margin-top: 36px;
 }
 
 .section-heading {
@@ -395,7 +391,7 @@ code {
 
 .details-section {
   margin-top: 52px;
-  scroll-margin-top: 108px;
+  scroll-margin-top: 36px;
 }
 
 .footer-social-wrap {
@@ -805,7 +801,6 @@ code {
   .hero-nav {
     width: min(100%, 440px);
     margin-bottom: 22px;
-    top: 10px;
     justify-content: center;
   }
 
