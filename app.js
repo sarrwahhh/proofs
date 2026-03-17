@@ -64,23 +64,6 @@ const defaultSiteContent = {
 
 let currentSiteContent = cloneValue(defaultSiteContent);
 
-function formatDate(value) {
-  if (!value) {
-    return "No date";
-  }
-
-  const parsed = new Date(value);
-  if (Number.isNaN(parsed.getTime())) {
-    return value;
-  }
-
-  return new Intl.DateTimeFormat("en-US", {
-    month: "short",
-    day: "numeric",
-    year: "numeric",
-  }).format(parsed);
-}
-
 function formatDateTime(value) {
   if (!value) {
     return "Waiting for uploads";
@@ -98,20 +81,6 @@ function formatDateTime(value) {
     hour: "numeric",
     minute: "2-digit",
   }).format(parsed);
-}
-
-function buildMeta(item) {
-  const parts = [];
-
-  if (item.customer) {
-    parts.push(item.customer);
-  }
-
-  if (item.id) {
-    parts.push(item.id);
-  }
-
-  return parts.join(" | ");
 }
 
 function setText(selector, value) {
@@ -214,11 +183,11 @@ function closeLightbox() {
   document.body.style.overflow = "";
 }
 
-function attachImage(button, image, caption, title) {
+function attachImage(button, image, caption) {
   const img = button.querySelector("img");
   img.src = image.src;
   img.alt = image.alt;
-  button.addEventListener("click", () => openLightbox(image.src, image.alt, `${title} - ${caption}`));
+  button.addEventListener("click", () => openLightbox(image.src, image.alt, caption));
 }
 
 function renderEmptyState() {
@@ -259,13 +228,8 @@ function renderProofs(payload) {
 
   for (const item of items) {
     const card = template.content.firstElementChild.cloneNode(true);
-    const title = item.title || "Untitled proof";
-    const proofAlt = `${title} proof image`;
-    const paymentAlt = `${title} payment image`;
-
-    card.querySelector(".card-title").textContent = title;
-    card.querySelector(".card-meta").textContent = buildMeta(item);
-    card.querySelector(".card-date").textContent = formatDate(item.date || item.added_at);
+    const proofAlt = "Proof image";
+    const paymentAlt = "Payment image";
 
     const note = card.querySelector(".card-note");
     if (item.note) {
@@ -277,14 +241,12 @@ function renderProofs(payload) {
       card.querySelector(".proof-button"),
       { src: item.proof_image, alt: proofAlt },
       "Proof",
-      title,
     );
 
     attachImage(
       card.querySelector(".payment-button"),
       { src: item.payment_image, alt: paymentAlt },
       "Payment",
-      title,
     );
 
     fragments.push(card);
