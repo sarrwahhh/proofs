@@ -10,6 +10,7 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = REPO_ROOT / "data" / "proofs.json"
+SITE_CONTENT_FILE = REPO_ROOT / "data" / "site_content.json"
 UPLOADS_DIR = REPO_ROOT / "assets" / "uploads"
 
 
@@ -41,6 +42,80 @@ def save_data(payload: dict) -> None:
     payload["updated_at"] = now_iso()
     content = json.dumps(payload, indent=2) + "\n"
     DATA_FILE.write_text(content, encoding="utf-8")
+
+
+def default_site_content() -> dict:
+    return {
+        "hero": {
+            "pill": "Verified showcase",
+            "title": "Proofs, key details, and terms in one polished view.",
+            "subtitle": "Review the proof and payment gallery first, then scroll into a clean placeholder section built for highlights, privacy notes, and terms you can swap later.",
+        },
+        "stats": {
+            "count_label": "proof sets",
+            "updated_label": "last update",
+            "layout_value": "Proof + payment stay paired together for fast review.",
+            "layout_label": "layout",
+        },
+        "gallery": {
+            "kicker": "Verified gallery",
+            "title": "Proof board",
+            "note": "Every card keeps the full proof and payment visible so the gallery stays clean, readable, and easy to scan on desktop or mobile.",
+            "empty_title": "No proof sets yet",
+            "empty_body": "Your proof and payment pairs will appear here after the first upload.",
+        },
+        "overview": {
+            "pill": "Overview preview",
+            "title": "Placeholder sections you can replace later",
+            "note": "This area is set up to preview extra copy under the gallery. The wording below stays neutral on purpose so you can swap in your final version whenever you are ready.",
+        },
+        "details": {
+            "benefits": {
+                "title": "Exclusive Benefits",
+                "items": [
+                    "Placeholder line for the main premium feature or standout offer.",
+                    "Placeholder line for higher limits, expanded access, or added value.",
+                    "Placeholder line for creative tools, extras, or advanced options.",
+                    "Placeholder line for additional perks you want to highlight clearly.",
+                ],
+            },
+            "privacy": {
+                "title": "Privacy & Security",
+                "items": [
+                    "Placeholder line for privacy expectations or personal-use wording.",
+                    "Placeholder line for secure setup, support, or access notes.",
+                    "Placeholder line for reliability, consistency, or account stability.",
+                    "Placeholder line for anything important people should know up front.",
+                ],
+            },
+            "terms": {
+                "title": "Pricing & Terms",
+                "items": [
+                    {"label": "Duration", "value": "Placeholder duration text"},
+                    {"label": "Price", "value": "Placeholder price here"},
+                    {"label": "Fees", "value": "Placeholder one-time payment note"},
+                    {"label": "Payment", "value": "Placeholder payment methods here"},
+                ],
+            },
+        },
+    }
+
+
+def load_site_content() -> dict:
+    ensure_structure()
+
+    if not SITE_CONTENT_FILE.exists():
+        payload = default_site_content()
+        save_site_content(payload)
+        return payload
+
+    return json.loads(SITE_CONTENT_FILE.read_text(encoding="utf-8"))
+
+
+def save_site_content(payload: dict) -> None:
+    ensure_structure()
+    content = json.dumps(payload, indent=2) + "\n"
+    SITE_CONTENT_FILE.write_text(content, encoding="utf-8")
 
 
 def resolve_image(source: str) -> Path:

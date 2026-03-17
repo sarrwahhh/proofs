@@ -6,7 +6,9 @@ This repo is set up for a GitHub Pages site that shows proof and payment images 
 
 - `index.html`, `styles.css`, `app.js`: the actual website
 - `data/proofs.json`: the list of proof/payment pairs shown on the site
+- `data/site_content.json`: the editable text shown across the site
 - `tools/add_proof.py`: adds a new proof/payment pair and updates the site data
+- `tools/edit_site_text.py`: opens a desktop editor for the site wording and publishes the update
 - `tools/publish.py`: commits and pushes the latest changes to GitHub
 
 ## Turn on GitHub Pages
@@ -50,6 +52,14 @@ If you want the old terminal-only behavior, run:
 ```powershell
 python tools/add_proof.py --no-gui
 ```
+
+## Edit the site text
+
+```powershell
+python tools/edit_site_text.py
+```
+
+That opens a desktop editor with the current site wording already filled in. Change any field, click `Confirm and send to site`, and it will push the text update to GitHub Pages for you.
 
 ## Preview locally
 
